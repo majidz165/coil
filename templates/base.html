@@ -1,0 +1,42 @@
+{% load static %}
+<!doctype html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{% static 'core/css/Vazirmatn-font-face.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap-icons.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'core/css/persian-datepicker.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/css/output.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/css/main.css' %}" />
+</head>
+
+<body class="bg-slate-100" lang="fa">
+    {% include 'navbar.html' %}
+    <div class="mx-0 px-4 mt-8 pt-6">
+        <div class="flex m-0 p-0 pt-6" dir="rtl">
+            {% if messages %} {% for message in messages %}
+            <div class="border-l-4 p-4 {% if message.tags == 'error' %} bg-red-200 border-red-600 text-red-600 {% else %} bg-green-200 border-green-600 text-green-600 {% endif %}"
+                role="alert">
+                {{message}}
+                <button type="button" class="" onclick="this.parentNode.remove()" aria-label="Close">
+                    <i class="bi bi-x-circle"></i>
+                </button>
+            </div>
+            {% endfor %} {% endif %}
+        </div>
+
+        {% block content %} {% endblock content %}
+    </div>
+    <script src="{% static 'core/js/jquery.js' %}"></script>
+    <script src="{% static 'core/js/persian-datepicker.js' %}"></script>
+
+    <script src="{% static 'core/js/main.js' %}"></script>
+
+    {% block js %} {% endblock js %}
+</body>
+
+</html>

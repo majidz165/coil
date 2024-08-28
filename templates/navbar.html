@@ -1,0 +1,13 @@
+<!-- Responsive Navbar -->
+<nav dir="rtl" class="backdrop-filter backdrop-blur-md py-2 shadow-md shadow-slate-200 fixed top-0 left-0 right-0 z-50">
+  <ul class="flex flex-row px-3 bg-transparent">
+    {% if request.user.is_authenticated %}
+    <li class="mr-auto">
+      <form id="frm_logout" method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <a href="#" onclick="$('#frm_logout').submit();" class="nav-link">خروج</a>
+      </form>
+    </li>
+    {% endif %}
+  </ul>
+</nav>

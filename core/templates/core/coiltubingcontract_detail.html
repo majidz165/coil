@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ object }}</h1>
+<p>Coil Tubing: {{ object.coil_tubing }}</p>
+<p>Contract: {{ object.contract }}</p>
+<p>Start Date: {{ object.start_date }}</p>
+<p>End Date: {{ object.end_date }}</p>
+<p>Active: {{ object.active }}</p>
+<a href="{% url 'coiltubingcontract-list' %}">Back to Coil Tubing Contract List</a>
+{% endblock %}

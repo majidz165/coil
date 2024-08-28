@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ object.name }}</h1>
+<p>Contact Person: {{ object.contact_person }}</p>
+<p>Email: {{ object.email }}</p>
+<p>Phone: {{ object.phone }}</p>
+<a href="{% url 'subcontractor-list' %}">Back to Subcontractor List</a>
+{% endblock %}

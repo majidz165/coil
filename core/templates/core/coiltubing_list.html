@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Coil Tubings</h1>
+<ul>
+    {% for coiltubing in object_list %}
+    <li><a href="{% url 'coiltubing-detail' coiltubing.pk %}">{{ coiltubing.name }}</a></li>
+    {% empty %}
+    <li>No coil tubings yet.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'coiltubing-create' %}">Add New Coil Tubing</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ object.name }}</h1>
+<p>Date of Purchase: {{ object.date_of_purchase }}</p>
+<p>Date of Manufacturing: {{ object.date_of_manufacturing }}</p>
+<p>Year of Import: {{ object.year_of_import }}</p>
+<p>Length of Reel: {{ object.length_of_reel }}</p>
+<p>Tonnage: {{ object.tonnage }}</p>
+<a href="{% url 'coiltubing-list' %}">Back to Coil Tubing List</a>
+{% endblock %}

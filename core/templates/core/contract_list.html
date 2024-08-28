@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Contracts</h1>
+<ul>
+    {% for contract in object_list %}
+    <li><a href="{% url 'contract-detail' contract.pk %}">{{ contract.name }}</a></li>
+    {% empty %}
+    <li>No contracts yet.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'contract-create' %}">Add New Contract</a>
+{% endblock %}

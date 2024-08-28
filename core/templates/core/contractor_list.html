@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Contractors</h1>
+<ul>
+    {% for contractor in object_list %}
+    <li><a href="{% url 'contractor-detail' contractor.pk %}">{{ contractor.company_name }}</a></li>
+    {% empty %}
+    <li>No contractors yet.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'contractor-create' %}">Add New Contractor</a>
+{% endblock %}

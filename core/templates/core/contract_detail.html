@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ object.name }}</h1>
+<p>Contractor: {{ object.contractor }}</p>
+<p>Contract Type: {{ object.contract_type }}</p>
+<p>Start Date: {{ object.start_date }}</p>
+<p>End Date: {{ object.end_date }}</p>
+<p>Total Value: {{ object.total_value }}</p>
+<p>Total Value (Euro): {{ object.total_value_euro }}</p>
+<a href="{% url 'contract-list' %}">Back to Contract List</a>
+{% endblock %}

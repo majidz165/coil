@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center h-screen">
+    <div class="bg-white flex rounded-md flex-col p-3 items-center justify-center w-3/4" dir="rtl">
+        <h1 class="text-2xl text-center">{% if form.instance.pk %}اصلاح{% else %}ثبت{% endif %} دستگاه لوله مغزی سیار
+        </h1>
+        <form method="post" class="flex w-full flex-col">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class=" mt-3 rounded-md px-2 py-1 bg-cyan-700 text-white" type="submit">ثبت</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
