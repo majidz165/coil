@@ -1,10 +1,21 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<h1>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Contract</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
+{% extends 'base.html' %} {% block content %}
+<div class="flex flex-col items-center justify-center">
+  <div
+    class="bg-white flex rounded-md flex-col p-3 items-center justify-center w-full md:w-3/4"
+    dir="rtl"
+  >
+    <h1 class="text-2xl text-center">
+      {% if form.instance.pk %}اصلاح{% else %}ثبت{% endif %} قرارداد
+    </h1>
+    <form method="post" class="flex w-full flex-col space-y-2">
+      {% csrf_token %} {{ form.as_p }}
+      <button
+        class="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:from-blue-600 hover:to-blue-800 focus:outline-none"
+        type="submit"
+      >
+        ثبت
+      </button>
+    </form>
+  </div>
+</div>
 {% endblock %}

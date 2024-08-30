@@ -1,13 +1,104 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h1 class="text-3xl font-bold mb-6">Contracts</h1>
 
-{% block content %}
-<h1>Contracts</h1>
-<ul>
-    {% for contract in object_list %}
-    <li><a href="{% url 'contract-detail' contract.pk %}">{{ contract.name }}</a></li>
-    {% empty %}
-    <li>No contracts yet.</li>
-    {% endfor %}
-</ul>
-<a href="{% url 'contract-create' %}">Add New Contract</a>
+<div class="space-y-4" dir="rtl">
+  {% for contract in object_list %}
+  <div class="bg-white shadow-md rounded-lg">
+    <div
+      class="flex justify-between items-center bg-gradient-to-r from-gray-200 to-gray-500 p-4 rounded-t-lg"
+    >
+      <h2
+        class="text-xl font-semibold flex-grow"
+        onclick="toggleDetails('contract-{{ contract.id }}')"
+      >
+        {{ contract.name }}
+      </h2>
+
+      {% if user.is_authenticated and user.is_superuser %}
+      <div class="flex space-x-2">
+        <a
+          href="{% url 'contract-update' contract.id %}"
+          class="text-blue-600 hover:text-blue-800"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+            />
+          </svg>
+        </a>
+        <button
+          class="text-red-600 hover:text-red-800"
+          onclick="deleteContract('{{ contract.id }}')"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+            />
+          </svg>
+        </button>
+      </div>
+      {% endif %}
+    </div>
+    <div
+      id="contract-{{ contract.id }}"
+      class="hidden mt-4 space-y-2 p-4"
+      dir="rtl"
+    >
+      <p><strong>Contractor:</strong> {{ contract.contractor }}</p>
+      <p><strong>Contract Type:</strong> {{ contract.contract_type }}</p>
+      <p><strong>Start Date:</strong> {{ contract.start_date }}</p>
+      <p><strong>End Date:</strong> {{ contract.end_date }}</p>
+      <p><strong>Total Value:</strong> {{ contract.total_value }}</p>
+      <p>
+        <strong>Total Value (Euro):</strong> {{ contract.total_value_euro }}
+      </p>
+      <p><strong>Created:</strong> {{ contract.created|date:"F d, Y H:i" }}</p>
+      <p>
+        <strong>Last Updated:</strong> {{ contract.updated|date:"F d, Y H:i" }}
+      </p>
+    </div>
+  </div>
+  {% empty %}
+  <p class="text-gray-600">No contracts available.</p>
+  {% endfor %}
+  <a
+    href="{% url 'contract-create' %}"
+    class="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:from-blue-600 hover:to-blue-800 focus:outline-none"
+  >
+    Add New Contract
+  </a>
+</div>
+
+<script>
+  function toggleDetails(id) {
+    const details = document.getElementById(id);
+    details.classList.toggle("hidden");
+  }
+
+  function deleteContract(id) {
+    if (confirm("Are you sure you want to delete this contract?")) {
+      // Add your delete logic here, e.g., make an AJAX call to delete the contract
+      console.log("Deleting contract with id:", id);
+    }
+  }
+</script>
+
 {% endblock %}

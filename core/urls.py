@@ -1,5 +1,7 @@
 from django.urls import path
 from .views import contractor_views, contract_views, coil_tubing_views
+from core.api_views.contract import CreateContractWithCoilTubingsView
+from core.router import urlpatterns as api_urls
 
 urlpatterns = [
     # Contractor URLs
@@ -16,14 +18,22 @@ urlpatterns = [
     path('contracts/', contract_views.ContractListView.as_view(), name='contract-list'),
     path('contracts/<int:pk>/', contract_views.ContractDetailView.as_view(), name='contract-detail'),
     path('contracts/create/', contract_views.ContractCreateView.as_view(), name='contract-create'),
-    
+
     # CoilTubing URLs
     path('coiltubings/', coil_tubing_views.CoilTubingListView.as_view(), name='coiltubing-list'),
     path('coiltubings/<int:pk>/', coil_tubing_views.CoilTubingDetailView.as_view(), name='coiltubing-detail'),
     path('coiltubings/create/', coil_tubing_views.CoilTubingCreateView.as_view(), name='coiltubing-create'),
+    path('coiltubings/update/<int:pk>/', coil_tubing_views.CoilTubingUpdateView.as_view(), name='coiltubing-update'),
     
     # CoilTubingContract URLs
     path('coiltubingcontracts/', coil_tubing_views.CoilTubingContractListView.as_view(), name='coiltubingcontract-list'),
     path('coiltubingcontracts/<int:pk>/', coil_tubing_views.CoilTubingContractDetailView.as_view(), name='coiltubingcontract-detail'),
     path('coiltubingcontracts/create/', coil_tubing_views.CoilTubingContractCreateView.as_view(), name='coiltubingcontract-create'),
-]
+
+
+    # api views
+    # path('api/create-contract/', ContractCreateAPIView.as_view(), name='api_create_contract'),
+    path('contracts/app/create/',CreateContractWithCoilTubingsView.as_view(),name='contract-create-api'),
+    # path('api/',api_urls),
+] 
+urlpatterns += api_urls
