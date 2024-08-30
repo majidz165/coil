@@ -91,7 +91,10 @@ const CreateContractWithCoilTubings = () => {
         dir="rtl"
       >
         <h1 className="text-2xl text-center">ایجاد قرارداد</h1>
-        <form onSubmit={handleSubmit} className="flex w-full flex-col space-y-2">
+        <form
+          onSubmit={handleSubmit}
+          className="flex w-full flex-col space-y-2"
+        >
           <div>
             <label htmlFor="contract_name">عنوان قرارداد:</label>
             <input
@@ -156,6 +159,6 @@ const CreateContractWithCoilTubings = () => {
       </div>
     </div>
   );
-
+};
 
 render(<CreateContractWithCoilTubings />, document.getElementById("app"));
