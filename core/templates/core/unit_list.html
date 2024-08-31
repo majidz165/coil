@@ -1,24 +1,24 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h1 class="text-3xl font-bold mb-6">Units</h1>
 
-{% block content %}
 <div class="space-y-4" dir="rtl">
-    {% for contractor in object_list %}
+    {% for unit in object_list %}
     <div class="bg-white shadow-md rounded-lg">
         <div class="flex justify-between items-center bg-gradient-to-r from-gray-200 to-gray-500 p-4 rounded-t-lg">
-            <h2 class="text-xl font-semibold flex-grow" onclick="toggleDetails('contractor-{{ contractor.id }}')">
-                {{ contractor.company_name }}
+            <h2 class="text-xl font-semibold flex-grow" onclick="toggleDetails('unit-{{ unit.id }}')">
+                {{ unit.name }}
             </h2>
 
             {% if user.is_authenticated and user.is_superuser %}
             <div class="flex space-x-2">
-                <a href="{% url 'contractor-update' contractor.id %}" class="text-blue-600 hover:text-blue-800">
+                <a href="{% url 'unit-update' unit.id %}" class="text-blue-600 hover:text-blue-800">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
                 </a>
-                <button class="text-red-600 hover:text-red-800" onclick="deleteContractor('{{ contractor.id }}')">
+                <button class="text-red-600 hover:text-red-800" onclick="deleteUnit('{{ unit.id }}')">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -28,16 +28,18 @@
             </div>
             {% endif %}
         </div>
-        <div id="contractor-{{ contractor.id }}" class="hidden mt-4 space-y-2 p-4" dir="rtl">
-            <!-- Add contractor details here -->
+        <div id="unit-{{ unit.id }}" class="hidden mt-4 space-y-2 p-4" dir="rtl">
+            <!-- Add unit-specific details here -->
+            <p><strong>Created:</strong> {{ unit.created|date:"F d, Y H:i" }}</p>
+            <p><strong>Last Updated:</strong> {{ unit.updated|date:"F d, Y H:i" }}</p>
         </div>
     </div>
     {% empty %}
-    <p class="text-gray-600">No contractors available.</p>
+    <p class="text-gray-600">No units available.</p>
     {% endfor %}
-    <a href="{% url 'contractor-create' %}"
+    <a href="{% url 'unit-create' %}"
         class="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:from-blue-600 hover:to-blue-800 focus:outline-none">
-        Add a new contractor
+        یک واحد جدید اضافه کنید
     </a>
 </div>
 
@@ -47,11 +49,12 @@
         details.classList.toggle("hidden");
     }
 
-    function deleteContractor(id) {
-        if (confirm("Are you sure you want to delete this contractor?")) {
-            // Add your delete logic here, e.g., make an AJAX call to delete the contractor
-            console.log("Deleting contractor with id:", id);
+    function deleteUnit(id) {
+        if (confirm("Are you sure you want to delete this unit?")) {
+            // Add your delete logic here, e.g., make an AJAX call to delete the unit
+            console.log("Deleting unit with id:", id);
         }
     }
 </script>
+
 {% endblock %}

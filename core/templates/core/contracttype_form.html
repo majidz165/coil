@@ -1,10 +1,8 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="flex flex-col items-center justify-center">
     <div class="bg-white flex rounded-md flex-col p-3 items-center justify-center w-full md:w-3/4" dir="rtl">
         <h1 class="text-2xl text-center">
-            {% if form.instance.pk %}اصلاح{% else %}ثبت{% endif %} پیمانکار
+            {% if form.instance.pk %}اصلاح{% else %}ثبت{% endif %} نوع قرارداد
         </h1>
         <form method="post" class="flex w-full flex-col space-y-2">
             {% csrf_token %} {{ form.as_p }}

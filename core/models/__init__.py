@@ -1,5 +1,5 @@
-# from .contractor import Contractor, Subcontractor
-from .contract import Contract, CBSItem, Unit
+from .contractor import Contractor, Subcontractor
+from .contract import Contract, CBSItem, Unit,ContractType
 # from .report import Report
 # from .activity import Activity
 # from .material import Material, MaterialUsage

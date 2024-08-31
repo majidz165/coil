@@ -1,1 +1,533 @@
-var I,h,d_,x,t_,h_,j,X,z,V,N={},v_=[],S_=/acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i,Y=Array.isArray;function $(e,_){for(var t in _)e[t]=_[t];return e}function m_(e){var _=e.parentNode;_&&_.removeChild(e)}function $_(e,_,t){var n,o,i,u={};for(i in _)i=="key"?n=_[i]:i=="ref"?o=_[i]:u[i]=_[i];if(arguments.length>2&&(u.children=arguments.length>3?I.call(arguments,2):t),typeof e=="function"&&e.defaultProps!=null)for(i in e.defaultProps)u[i]===void 0&&(u[i]=e.defaultProps[i]);return L(e,u,n,o,null)}function L(e,_,t,n,o){var i={type:e,props:_,key:t,ref:n,__k:null,__:null,__b:0,__e:null,__d:void 0,__c:null,constructor:void 0,__v:o??++d_,__i:-1,__u:0};return o==null&&h.vnode!=null&&h.vnode(i),i}function B(e){return e.children}function A(e,_){this.props=e,this.context=_}function T(e,_){if(_==null)return e.__?T(e.__,e.__i+1):null;for(var t;_<e.__k.length;_++)if((t=e.__k[_])!=null&&t.__e!=null)return t.__e;return typeof e.type=="function"?T(e):null}function y_(e){var _,t;if((e=e.__)!=null&&e.__c!=null){for(e.__e=e.__c.base=null,_=0;_<e.__k.length;_++)if((t=e.__k[_])!=null&&t.__e!=null){e.__e=e.__c.base=t.__e;break}return y_(e)}}function n_(e){(!e.__d&&(e.__d=!0)&&x.push(e)&&!q.__r++||t_!==h.debounceRendering)&&((t_=h.debounceRendering)||h_)(q)}function q(){var e,_,t,n,o,i,u,l;for(x.sort(j);e=x.shift();)e.__d&&(_=x.length,n=void 0,i=(o=(t=e).__v).__e,u=[],l=[],t.__P&&((n=$({},o)).__v=o.__v+1,h.vnode&&h.vnode(n),Z(t.__P,n,o,t.__n,t.__P.namespaceURI,32&o.__u?[i]:null,u,i??T(o),!!(32&o.__u),l),n.__v=o.__v,n.__.__k[n.__i]=n,k_(u,n,l),n.__e!=i&&y_(n)),x.length>_&&x.sort(j));q.__r=0}function g_(e,_,t,n,o,i,u,l,a,c,s){var r,p,f,b,w,k=n&&n.__k||v_,d=_.length;for(t.__d=a,x_(t,_,k),a=t.__d,r=0;r<d;r++)(f=t.__k[r])!=null&&typeof f!="boolean"&&typeof f!="function"&&(p=f.__i===-1?N:k[f.__i]||N,f.__i=r,Z(e,f,p,o,i,u,l,a,c,s),b=f.__e,f.ref&&p.ref!=f.ref&&(p.ref&&__(p.ref,null,f),s.push(f.ref,f.__c||b,f)),w==null&&b!=null&&(w=b),65536&f.__u||p.__k===f.__k?a=b_(f,a,e):typeof f.type=="function"&&f.__d!==void 0?a=f.__d:b&&(a=b.nextSibling),f.__d=void 0,f.__u&=-196609);t.__d=a,t.__e=w}function x_(e,_,t){var n,o,i,u,l,a=_.length,c=t.length,s=c,r=0;for(e.__k=[],n=0;n<a;n++)u=n+r,(o=e.__k[n]=(o=_[n])==null||typeof o=="boolean"||typeof o=="function"?null:typeof o=="string"||typeof o=="number"||typeof o=="bigint"||o.constructor==String?L(null,o,null,null,null):Y(o)?L(B,{children:o},null,null,null):o.constructor===void 0&&o.__b>0?L(o.type,o.props,o.key,o.ref?o.ref:null,o.__v):o)!=null?(o.__=e,o.__b=e.__b+1,l=T_(o,t,u,s),o.__i=l,i=null,l!==-1&&(s--,(i=t[l])&&(i.__u|=131072)),i==null||i.__v===null?(l==-1&&r--,typeof o.type!="function"&&(o.__u|=65536)):l!==u&&(l==u-1?r--:l==u+1?r++:l>u?s>a-u?r+=l-u:r--:l<u&&(l==u-r?r-=l-u:r++),l!==n+r&&(o.__u|=65536))):(i=t[u])&&i.key==null&&i.__e&&!(131072&i.__u)&&(i.__e==e.__d&&(e.__d=T(i)),J(i,i,!1),t[u]=null,s--);if(s)for(n=0;n<c;n++)(i=t[n])!=null&&!(131072&i.__u)&&(i.__e==e.__d&&(e.__d=T(i)),J(i,i))}function b_(e,_,t){var n,o;if(typeof e.type=="function"){for(n=e.__k,o=0;n&&o<n.length;o++)n[o]&&(n[o].__=e,_=b_(n[o],_,t));return _}e.__e!=_&&(_&&e.type&&!t.contains(_)&&(_=T(e)),t.insertBefore(e.__e,_||null),_=e.__e);do _=_&&_.nextSibling;while(_!=null&&_.nodeType===8);return _}function T_(e,_,t,n){var o=e.key,i=e.type,u=t-1,l=t+1,a=_[t];if(a===null||a&&o==a.key&&i===a.type&&!(131072&a.__u))return t;if(n>(a!=null&&!(131072&a.__u)?1:0))for(;u>=0||l<_.length;){if(u>=0){if((a=_[u])&&!(131072&a.__u)&&o==a.key&&i===a.type)return u;u--}if(l<_.length){if((a=_[l])&&!(131072&a.__u)&&o==a.key&&i===a.type)return l;l++}}return-1}function o_(e,_,t){_[0]==="-"?e.setProperty(_,t??""):e[_]=t==null?"":typeof t!="number"||S_.test(_)?t:t+"px"}function M(e,_,t,n,o){var i;_:if(_==="style")if(typeof t=="string")e.style.cssText=t;else{if(typeof n=="string"&&(e.style.cssText=n=""),n)for(_ in n)t&&_ in t||o_(e.style,_,"");if(t)for(_ in t)n&&t[_]===n[_]||o_(e.style,_,t[_])}else if(_[0]==="o"&&_[1]==="n")i=_!==(_=_.replace(/(PointerCapture)$|Capture$/i,"$1")),_=_.toLowerCase()in e||_==="onFocusOut"||_==="onFocusIn"?_.toLowerCase().slice(2):_.slice(2),e.l||(e.l={}),e.l[_+i]=t,t?n?t.u=n.u:(t.u=X,e.addEventListener(_,i?V:z,i)):e.removeEventListener(_,i?V:z,i);else{if(o=="http://www.w3.org/2000/svg")_=_.replace(/xlink(H|:h)/,"h").replace(/sName$/,"s");else if(_!="width"&&_!="height"&&_!="href"&&_!="list"&&_!="form"&&_!="tabIndex"&&_!="download"&&_!="rowSpan"&&_!="colSpan"&&_!="role"&&_!="popover"&&_ in e)try{e[_]=t??"";break _}catch{}typeof t=="function"||(t==null||t===!1&&_[4]!=="-"?e.removeAttribute(_):e.setAttribute(_,_=="popover"&&t==1?"":t))}}function r_(e){return function(_){if(this.l){var t=this.l[_.type+e];if(_.t==null)_.t=X++;else if(_.t<t.u)return;return t(h.event?h.event(_):_)}}}function Z(e,_,t,n,o,i,u,l,a,c){var s,r,p,f,b,w,k,d,v,H,S,F,P,e_,U,O,C=_.type;if(_.constructor!==void 0)return null;128&t.__u&&(a=!!(32&t.__u),i=[l=_.__e=t.__e]),(s=h.__b)&&s(_);_:if(typeof C=="function")try{if(d=_.props,v="prototype"in C&&C.prototype.render,H=(s=C.contextType)&&n[s.__c],S=s?H?H.props.value:s.__:n,t.__c?k=(r=_.__c=t.__c).__=r.__E:(v?_.__c=r=new C(d,S):(_.__c=r=new A(d,S),r.constructor=C,r.render=P_),H&&H.sub(r),r.props=d,r.state||(r.state={}),r.context=S,r.__n=n,p=r.__d=!0,r.__h=[],r._sb=[]),v&&r.__s==null&&(r.__s=r.state),v&&C.getDerivedStateFromProps!=null&&(r.__s==r.state&&(r.__s=$({},r.__s)),$(r.__s,C.getDerivedStateFromProps(d,r.__s))),f=r.props,b=r.state,r.__v=_,p)v&&C.getDerivedStateFromProps==null&&r.componentWillMount!=null&&r.componentWillMount(),v&&r.componentDidMount!=null&&r.__h.push(r.componentDidMount);else{if(v&&C.getDerivedStateFromProps==null&&d!==f&&r.componentWillReceiveProps!=null&&r.componentWillReceiveProps(d,S),!r.__e&&(r.shouldComponentUpdate!=null&&r.shouldComponentUpdate(d,r.__s,S)===!1||_.__v===t.__v)){for(_.__v!==t.__v&&(r.props=d,r.state=r.__s,r.__d=!1),_.__e=t.__e,_.__k=t.__k,_.__k.forEach(function(D){D&&(D.__=_)}),F=0;F<r._sb.length;F++)r.__h.push(r._sb[F]);r._sb=[],r.__h.length&&u.push(r);break _}r.componentWillUpdate!=null&&r.componentWillUpdate(d,r.__s,S),v&&r.componentDidUpdate!=null&&r.__h.push(function(){r.componentDidUpdate(f,b,w)})}if(r.context=S,r.props=d,r.__P=e,r.__e=!1,P=h.__r,e_=0,v){for(r.state=r.__s,r.__d=!1,P&&P(_),s=r.render(r.props,r.state,r.context),U=0;U<r._sb.length;U++)r.__h.push(r._sb[U]);r._sb=[]}else do r.__d=!1,P&&P(_),s=r.render(r.props,r.state,r.context),r.state=r.__s;while(r.__d&&++e_<25);r.state=r.__s,r.getChildContext!=null&&(n=$($({},n),r.getChildContext())),v&&!p&&r.getSnapshotBeforeUpdate!=null&&(w=r.getSnapshotBeforeUpdate(f,b)),g_(e,Y(O=s!=null&&s.type===B&&s.key==null?s.props.children:s)?O:[O],_,t,n,o,i,u,l,a,c),r.base=_.__e,_.__u&=-161,r.__h.length&&u.push(r),k&&(r.__E=r.__=null)}catch(D){if(_.__v=null,a||i!=null){for(_.__u|=a?160:32;l&&l.nodeType===8&&l.nextSibling;)l=l.nextSibling;i[i.indexOf(l)]=null,_.__e=l}else _.__e=t.__e,_.__k=t.__k;h.__e(D,_,t)}else i==null&&_.__v===t.__v?(_.__k=t.__k,_.__e=t.__e):_.__e=H_(t.__e,_,t,n,o,i,u,a,c);(s=h.diffed)&&s(_)}function k_(e,_,t){_.__d=void 0;for(var n=0;n<t.length;n++)__(t[n],t[++n],t[++n]);h.__c&&h.__c(_,e),e.some(function(o){try{e=o.__h,o.__h=[],e.some(function(i){i.call(o)})}catch(i){h.__e(i,o.__v)}})}function H_(e,_,t,n,o,i,u,l,a){var c,s,r,p,f,b,w,k=t.props,d=_.props,v=_.type;if(v==="svg"?o="http://www.w3.org/2000/svg":v==="math"?o="http://www.w3.org/1998/Math/MathML":o||(o="http://www.w3.org/1999/xhtml"),i!=null){for(c=0;c<i.length;c++)if((f=i[c])&&"setAttribute"in f==!!v&&(v?f.localName===v:f.nodeType===3)){e=f,i[c]=null;break}}if(e==null){if(v===null)return document.createTextNode(d);e=document.createElementNS(o,v,d.is&&d),i=null,l=!1}if(v===null)k===d||l&&e.data===d||(e.data=d);else{if(i=i&&I.call(e.childNodes),k=t.props||N,!l&&i!=null)for(k={},c=0;c<e.attributes.length;c++)k[(f=e.attributes[c]).name]=f.value;for(c in k)if(f=k[c],c!="children"){if(c=="dangerouslySetInnerHTML")r=f;else if(c!=="key"&&!(c in d)){if(c=="value"&&"defaultValue"in d||c=="checked"&&"defaultChecked"in d)continue;M(e,c,null,f,o)}}for(c in d)f=d[c],c=="children"?p=f:c=="dangerouslySetInnerHTML"?s=f:c=="value"?b=f:c=="checked"?w=f:c==="key"||l&&typeof f!="function"||k[c]===f||M(e,c,f,k[c],o);if(s)l||r&&(s.__html===r.__html||s.__html===e.innerHTML)||(e.innerHTML=s.__html),_.__k=[];else if(r&&(e.innerHTML=""),g_(e,Y(p)?p:[p],_,t,n,v==="foreignObject"?"http://www.w3.org/1999/xhtml":o,i,u,i?i[0]:t.__k&&T(t,0),l,a),i!=null)for(c=i.length;c--;)i[c]!=null&&m_(i[c]);l||(c="value",b!==void 0&&(b!==e[c]||v==="progress"&&!b||v==="option"&&b!==k[c])&&M(e,c,b,k[c],o),c="checked",w!==void 0&&w!==e[c]&&M(e,c,w,k[c],o))}return e}function __(e,_,t){try{if(typeof e=="function"){var n=typeof e.__u=="function";n&&e.__u(),n&&_==null||(e.__u=e(_))}else e.current=_}catch(o){h.__e(o,t)}}function J(e,_,t){var n,o;if(h.unmount&&h.unmount(e),(n=e.ref)&&(n.current&&n.current!==e.__e||__(n,null,_)),(n=e.__c)!=null){if(n.componentWillUnmount)try{n.componentWillUnmount()}catch(i){h.__e(i,_)}n.base=n.__P=null}if(n=e.__k)for(o=0;o<n.length;o++)n[o]&&J(n[o],_,t||typeof e.type!="function");t||e.__e==null||m_(e.__e),e.__c=e.__=e.__e=e.__d=void 0}function P_(e,_,t){return this.constructor(e,t)}function E_(e,_,t){var n,o,i,u;h.__&&h.__(e,_),o=(n=typeof t=="function")?null:_.__k,i=[],u=[],Z(_,e=(!n&&t||_).__k=$_(B,null,[e]),o||N,N,_.namespaceURI,!n&&t?[t]:o?null:_.firstChild?I.call(_.childNodes):null,i,!n&&t?t:o?o.__e:_.firstChild,n,u),k_(i,e,u)}I=v_.slice,h={__e:function(e,_,t,n){for(var o,i,u;_=_.__;)if((o=_.__c)&&!o.__)try{if((i=o.constructor)&&i.getDerivedStateFromError!=null&&(o.setState(i.getDerivedStateFromError(e)),u=o.__d),o.componentDidCatch!=null&&(o.componentDidCatch(e,n||{}),u=o.__d),u)return o.__E=o}catch(l){e=l}throw e}},d_=0,A.prototype.setState=function(e,_){var t;t=this.__s!=null&&this.__s!==this.state?this.__s:this.__s=$({},this.state),typeof e=="function"&&(e=e($({},t),this.props)),e&&$(t,e),e!=null&&this.__v&&(_&&this._sb.push(_),n_(this))},A.prototype.forceUpdate=function(e){this.__v&&(this.__e=!0,e&&this.__h.push(e),n_(this))},A.prototype.render=B,x=[],h_=typeof Promise=="function"?Promise.prototype.then.bind(Promise.resolve()):setTimeout,j=function(e,_){return e.__v.__b-_.__v.__b},q.__r=0,X=0,z=r_(!1),V=r_(!0);var N_=0;function y(e,_,t,n,o,i){_||(_={});var u,l,a=_;if("ref"in a)for(l in a={},_)l=="ref"?u=_[l]:a[l]=_[l];var c={type:e,props:a,key:t,ref:u,__k:null,__:null,__b:0,__e:null,__d:void 0,__c:null,constructor:void 0,__v:--N_,__i:-1,__u:0,__source:o,__self:i};if(typeof e=="function"&&(u=e.defaultProps))for(l in u)a[l]===void 0&&(a[l]=u[l]);return h.vnode&&h.vnode(c),c}var G,m,R,i_,K=0,w_=[],g=h,l_=g.__b,c_=g.__r,u_=g.diffed,a_=g.__c,f_=g.unmount,s_=g.__;function F_(e,_){g.__h&&g.__h(m,e,K||_),K=0;var t=m.__H||(m.__H={__:[],__h:[]});return e>=t.__.length&&t.__.push({}),t.__[e]}function E(e){return K=1,U_(C_,e)}function U_(e,_,t){var n=F_(G++,2);if(n.t=e,!n.__c&&(n.__=[C_(void 0,_),function(l){var a=n.__N?n.__N[0]:n.__[0],c=n.t(a,l);a!==c&&(n.__N=[c,n.__[1]],n.__c.setState({}))}],n.__c=m,!m.u)){var o=function(l,a,c){if(!n.__c.__H)return!0;var s=n.__c.__H.__.filter(function(p){return!!p.__c});if(s.every(function(p){return!p.__N}))return!i||i.call(this,l,a,c);var r=!1;return s.forEach(function(p){if(p.__N){var f=p.__[0];p.__=p.__N,p.__N=void 0,f!==p.__[0]&&(r=!0)}}),!(!r&&n.__c.props===l)&&(!i||i.call(this,l,a,c))};m.u=!0;var i=m.shouldComponentUpdate,u=m.componentWillUpdate;m.componentWillUpdate=function(l,a,c){if(this.__e){var s=i;i=void 0,o(l,a,c),i=s}u&&u.call(this,l,a,c)},m.shouldComponentUpdate=o}return n.__N||n.__}function D_(){for(var e;e=w_.shift();)if(e.__P&&e.__H)try{e.__H.__h.forEach(W),e.__H.__h.forEach(Q),e.__H.__h=[]}catch(_){e.__H.__h=[],g.__e(_,e.__v)}}g.__b=function(e){m=null,l_&&l_(e)},g.__=function(e,_){e&&_.__k&&_.__k.__m&&(e.__m=_.__k.__m),s_&&s_(e,_)},g.__r=function(e){c_&&c_(e),G=0;var _=(m=e.__c).__H;_&&(R===m?(_.__h=[],m.__h=[],_.__.forEach(function(t){t.__N&&(t.__=t.__N),t.i=t.__N=void 0})):(_.__h.forEach(W),_.__h.forEach(Q),_.__h=[],G=0)),R=m},g.diffed=function(e){u_&&u_(e);var _=e.__c;_&&_.__H&&(_.__H.__h.length&&(w_.push(_)!==1&&i_===g.requestAnimationFrame||((i_=g.requestAnimationFrame)||M_)(D_)),_.__H.__.forEach(function(t){t.i&&(t.__H=t.i),t.i=void 0})),R=m=null},g.__c=function(e,_){_.some(function(t){try{t.__h.forEach(W),t.__h=t.__h.filter(function(n){return!n.__||Q(n)})}catch(n){_.some(function(o){o.__h&&(o.__h=[])}),_=[],g.__e(n,t.__v)}}),a_&&a_(e,_)},g.unmount=function(e){f_&&f_(e);var _,t=e.__c;t&&t.__H&&(t.__H.__.forEach(function(n){try{W(n)}catch(o){_=o}}),t.__H=void 0,_&&g.__e(_,t.__v))};var p_=typeof requestAnimationFrame=="function";function M_(e){var _,t=function(){clearTimeout(n),p_&&cancelAnimationFrame(_),setTimeout(e)},n=setTimeout(t,100);p_&&(_=requestAnimationFrame(t))}function W(e){var _=m,t=e.__c;typeof t=="function"&&(e.__c=void 0,t()),m=_}function Q(e){var _=m;e.__c=e.__(),m=_}function C_(e,_){return typeof _=="function"?_(e):_}const L_=()=>{const[e,_]=E({name:"",contractor:"",contract_type:"",start_date:"",end_date:"",total_value:"",total_value_euro:""}),[t,n]=E([]);E([]),E([]);const[o,i]=E([]),u=a=>{_({...e,[a.target.name]:a.target.value})};return y("div",{children:[y("h1",{children:"ایجاد قرارداد"}),y("form",{onSubmit:async a=>{a.preventDefault();const c={...e,coil_tubings:t};try{(await fetch("/api/contracts/",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(c)})).ok?alert("Contract with coil tubings created successfully!"):alert("Error creating contract")}catch(s){console.error("Error:",s)}},children:[y("div",{children:[y("label",{htmlFor:"contract_name",children:"عنوان قرارداد:"}),y("input",{type:"text",id:"contract_name",name:"contract_name",value:e.name||"",onChange:u,required:!0})]}),y("div",{children:[y("label",{htmlFor:"contract_type",children:"نوع قرارداد:"}),y("select",{id:"contract_type",name:"contract_type",value:e.contract_type||"",onChange:u,required:!0,children:[y("option",{value:"",children:"یک نوع قرارداد انتخاب کنید"}),o.map(a=>y("option",{value:a.id,children:a.name},a.id))]})]}),y("div",{children:[y("label",{htmlFor:"start_date",children:"تاریخ شروع:"}),y("input",{type:"date",id:"start_date",name:"start_date",value:e.start_date||"",onChange:u,required:!0})]}),y("div",{children:[y("label",{htmlFor:"end_date",children:"تاریخ پایان:"}),y("input",{type:"date",id:"end_date",name:"end_date",value:e.end_date||"",onChange:u,required:!0})]}),y("button",{type:"submit",children:"ثبت قرارداد"})]})]})};E_(y(L_,{}),document.getElementById("app"));
+import { l, k, B } from "./justCheck.js";
+import { A, h, y } from "./Modal.js";
+var f = 0;
+function u(e, t, n, o, i, u2) {
+  t || (t = {});
+  var a, c, p = t;
+  if ("ref" in p) for (c in p = {}, t) "ref" == c ? a = t[c] : p[c] = t[c];
+  var l$1 = { type: e, props: p, key: n, ref: a, __k: null, __: null, __b: 0, __e: null, __d: void 0, __c: null, constructor: void 0, __v: --f, __i: -1, __u: 0, __source: i, __self: u2 };
+  if ("function" == typeof e && (a = e.defaultProps)) for (c in a) void 0 === p[c] && (p[c] = a[c]);
+  return l.vnode && l.vnode(l$1), l$1;
+}
+function Modal({ showModal, setShowModal, errors, children }) {
+  const modal = A();
+  const modalBody = A();
+  function handleClick(event) {
+    if (event.target == modal.current) {
+      setShowModal(false);
+    }
+  }
+  return /* @__PURE__ */ u(k, { children: [
+    " ",
+    showModal ? /* @__PURE__ */ u(
+      "div",
+      {
+        dir: "rtl",
+        className: "fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center backdrop-blur-md",
+        ref: modal,
+        onClick: handleClick,
+        children: /* @__PURE__ */ u(
+          "div",
+          {
+            className: "w-10/12 flex flex-col bg-white rounded-md modal-body justify-center items-center",
+            ref: modalBody,
+            style: { minHeight: "50vh" },
+            children: [
+              errors && /* @__PURE__ */ u("h1", { className: "text-red-500 text-center py-3 mb-2 bg-white", children: errors }),
+              children
+            ]
+          }
+        )
+      }
+    ) : /* @__PURE__ */ u(k, {})
+  ] });
+}
+var jalaaliJs = {
+  toJalaali,
+  toGregorian,
+  isValidJalaaliDate,
+  isLeapJalaaliYear,
+  jalaaliMonthLength,
+  jalCal,
+  j2d,
+  d2j,
+  g2d,
+  d2g,
+  jalaaliToDateObject,
+  jalaaliWeek
+};
+var breaks = [
+  -61,
+  9,
+  38,
+  199,
+  426,
+  686,
+  756,
+  818,
+  1111,
+  1181,
+  1210,
+  1635,
+  2060,
+  2097,
+  2192,
+  2262,
+  2324,
+  2394,
+  2456,
+  3178
+];
+function toJalaali(gy, gm, gd) {
+  if (Object.prototype.toString.call(gy) === "[object Date]") {
+    gd = gy.getDate();
+    gm = gy.getMonth() + 1;
+    gy = gy.getFullYear();
+  }
+  return d2j(g2d(gy, gm, gd));
+}
+function toGregorian(jy, jm, jd) {
+  return d2g(j2d(jy, jm, jd));
+}
+function isValidJalaaliDate(jy, jm, jd) {
+  return jy >= -61 && jy <= 3177 && jm >= 1 && jm <= 12 && jd >= 1 && jd <= jalaaliMonthLength(jy, jm);
+}
+function isLeapJalaaliYear(jy) {
+  return jalCalLeap(jy) === 0;
+}
+function jalaaliMonthLength(jy, jm) {
+  if (jm <= 6) return 31;
+  if (jm <= 11) return 30;
+  if (isLeapJalaaliYear(jy)) return 30;
+  return 29;
+}
+function jalCalLeap(jy) {
+  var bl = breaks.length, jp = breaks[0], jm, jump, leap, n, i;
+  if (jy < jp || jy >= breaks[bl - 1])
+    throw new Error("Invalid Jalaali year " + jy);
+  for (i = 1; i < bl; i += 1) {
+    jm = breaks[i];
+    jump = jm - jp;
+    if (jy < jm)
+      break;
+    jp = jm;
+  }
+  n = jy - jp;
+  if (jump - n < 6)
+    n = n - jump + div(jump + 4, 33) * 33;
+  leap = mod(mod(n + 1, 33) - 1, 4);
+  if (leap === -1) {
+    leap = 4;
+  }
+  return leap;
+}
+function jalCal(jy, withoutLeap) {
+  var bl = breaks.length, gy = jy + 621, leapJ = -14, jp = breaks[0], jm, jump, leap, leapG, march, n, i;
+  if (jy < jp || jy >= breaks[bl - 1])
+    throw new Error("Invalid Jalaali year " + jy);
+  for (i = 1; i < bl; i += 1) {
+    jm = breaks[i];
+    jump = jm - jp;
+    if (jy < jm)
+      break;
+    leapJ = leapJ + div(jump, 33) * 8 + div(mod(jump, 33), 4);
+    jp = jm;
+  }
+  n = jy - jp;
+  leapJ = leapJ + div(n, 33) * 8 + div(mod(n, 33) + 3, 4);
+  if (mod(jump, 33) === 4 && jump - n === 4)
+    leapJ += 1;
+  leapG = div(gy, 4) - div((div(gy, 100) + 1) * 3, 4) - 150;
+  march = 20 + leapJ - leapG;
+  if (withoutLeap) return { gy, march };
+  if (jump - n < 6)
+    n = n - jump + div(jump + 4, 33) * 33;
+  leap = mod(mod(n + 1, 33) - 1, 4);
+  if (leap === -1) {
+    leap = 4;
+  }
+  return {
+    leap,
+    gy,
+    march
+  };
+}
+function j2d(jy, jm, jd) {
+  var r = jalCal(jy, true);
+  return g2d(r.gy, 3, r.march) + (jm - 1) * 31 - div(jm, 7) * (jm - 7) + jd - 1;
+}
+function d2j(jdn) {
+  var gy = d2g(jdn).gy, jy = gy - 621, r = jalCal(jy, false), jdn1f = g2d(gy, 3, r.march), jd, jm, k2;
+  k2 = jdn - jdn1f;
+  if (k2 >= 0) {
+    if (k2 <= 185) {
+      jm = 1 + div(k2, 31);
+      jd = mod(k2, 31) + 1;
+      return {
+        jy,
+        jm,
+        jd
+      };
+    } else {
+      k2 -= 186;
+    }
+  } else {
+    jy -= 1;
+    k2 += 179;
+    if (r.leap === 1)
+      k2 += 1;
+  }
+  jm = 7 + div(k2, 30);
+  jd = mod(k2, 30) + 1;
+  return {
+    jy,
+    jm,
+    jd
+  };
+}
+function g2d(gy, gm, gd) {
+  var d = div((gy + div(gm - 8, 6) + 100100) * 1461, 4) + div(153 * mod(gm + 9, 12) + 2, 5) + gd - 34840408;
+  d = d - div(div(gy + 100100 + div(gm - 8, 6), 100) * 3, 4) + 752;
+  return d;
+}
+function d2g(jdn) {
+  var j, i, gd, gm, gy;
+  j = 4 * jdn + 139361631;
+  j = j + div(div(4 * jdn + 183187720, 146097) * 3, 4) * 4 - 3908;
+  i = div(mod(j, 1461), 4) * 5 + 308;
+  gd = div(mod(i, 153), 5) + 1;
+  gm = mod(div(i, 153), 12) + 1;
+  gy = div(j, 1461) - 100100 + div(8 - gm, 6);
+  return {
+    gy,
+    gm,
+    gd
+  };
+}
+function jalaaliWeek(jy, jm, jd) {
+  var dayOfWeek = jalaaliToDateObject(jy, jm, jd).getDay();
+  var startDayDifference = dayOfWeek == 6 ? 0 : -(dayOfWeek + 1);
+  var endDayDifference = 6 + startDayDifference;
+  return {
+    saturday: d2j(j2d(jy, jm, jd + startDayDifference)),
+    friday: d2j(j2d(jy, jm, jd + endDayDifference))
+  };
+}
+function jalaaliToDateObject(jy, jm, jd, h2, m, s, ms) {
+  var gregorianCalenderDate = toGregorian(jy, jm, jd);
+  return new Date(
+    gregorianCalenderDate.gy,
+    gregorianCalenderDate.gm - 1,
+    gregorianCalenderDate.gd,
+    h2 || 0,
+    m || 0,
+    s || 0,
+    ms || 0
+  );
+}
+function div(a, b) {
+  return ~~(a / b);
+}
+function mod(a, b) {
+  return a - ~~(a / b) * b;
+}
+const CreateContractWithCoilTubings = () => {
+  const [showModal, setShowModal] = h(false);
+  const [errors, setErrors] = h(false);
+  const [contract, setContract] = h({
+    name: "",
+    contractor: "",
+    contract_type: "",
+    start_date: "",
+    end_date: "",
+    total_value: "",
+    total_value_euro: ""
+  });
+  const [coilTubings, setCoilTubings] = h([]);
+  const [availableCoilTubings, setAvailableCoilTubings] = h([]);
+  const [contractors, setContractors] = h([]);
+  const [contractTypes, setContractTypes] = h([]);
+  const [selectedCoil, setSelectedCoil] = h(null);
+  const [coils, setCoils] = h([]);
+  const [modalContent, setModalContent] = h(null);
+  y(() => {
+    fetchAvailableCoilTubings();
+    fetchContractors();
+    fetchContractTypes();
+  }, []);
+  const fetchAvailableCoilTubings = async () => {
+    const response = await fetch("/api/coil-tubings/");
+    const data = await response.json();
+    setAvailableCoilTubings(data);
+  };
+  const fetchContractors = async () => {
+    const response = await fetch("/api/contractors/");
+    const data = await response.json();
+    setContractors(data);
+  };
+  const fetchContractTypes = async () => {
+    const response = await fetch("/api/contract-types/");
+    const data = await response.json();
+    setContractTypes(data);
+  };
+  const handleContractChange = (e) => {
+    setContract({ ...contract, [e.target.name]: e.target.value });
+  };
+  const handleContractChangeDates = (e) => {
+    const [y2, m, d] = e.target.value.split("/");
+    const gregorianDate = jalaaliJs.toGregorian(parseInt(y2), parseInt(m), parseInt(d));
+    const date = `${gregorianDate.gy}-${gregorianDate.gm}-${gregorianDate.gd}`;
+    setContract({ ...contract, [e.target.name]: date });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const contractData = {
+      ...contract,
+      coil_tubings: coilTubings
+    };
+    let csrf = getCookie("csrftoken");
+    try {
+      const response = await fetch("/api/create/contract", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrf
+        },
+        body: JSON.stringify(contractData)
+      });
+      if (response.ok) {
+        response.json().then((data) => {
+          window.location.href = data.url;
+        });
+      } else {
+        alert("Error creating contract");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+  function showJalali(date) {
+    if (date) {
+      console.log(date);
+      const [y2, m, d] = date.split("-");
+      const j = jalaaliJs.toJalaali(parseInt(y2), parseInt(m), parseInt(d));
+      return `${j.jy}/${j.jm}/${j.jd}`;
+    }
+    return "";
+  }
+  function handleSelectCoil(e) {
+    const coilId = parseInt(e.target.value);
+    const coil = availableCoilTubings.find((coil2) => coil2.id === coilId);
+    setCoilTubings([
+      ...coilTubings,
+      { coil_tubing: coilId }
+    ]);
+    setShowModal(false);
+    setCoils([...coils, coil]);
+  }
+  function handleAddCoil() {
+    const modalBody = /* @__PURE__ */ u(k, { children: /* @__PURE__ */ u("div", { children: [
+      /* @__PURE__ */ u("label", { htmlFor: "coil", children: "انتخاب کویل:" }),
+      /* @__PURE__ */ u(
+        "select",
+        {
+          id: "coil",
+          name: "coil",
+          value: selectedCoil || "",
+          onChange: handleSelectCoil,
+          required: true,
+          className: "w-full px-3 py-2 border rounded-lg",
+          children: [
+            /* @__PURE__ */ u("option", { value: "", children: "یک کویل انتخاب کنید" }),
+            availableCoilTubings.map((coil) => /* @__PURE__ */ u("option", { value: coil.id, children: coil.name }, coil.id))
+          ]
+        }
+      )
+    ] }) });
+    setModalContent(modalBody);
+    setShowModal(true);
+  }
+  const handleDeleteCoil = (index) => {
+    const updatedCoils = coils.filter((_, i) => _.id !== index);
+    const updatedCoilTubings = coilTubings.filter((_, i) => _.coil_tubing !== index);
+    setCoils(updatedCoils);
+    setCoilTubings(updatedCoilTubings);
+  };
+  return /* @__PURE__ */ u("div", { className: "flex flex-col items-center justify-center", children: /* @__PURE__ */ u(
+    "div",
+    {
+      className: "bg-white flex rounded-md flex-col p-3 items-center justify-center w-full md:w-3/4",
+      dir: "rtl",
+      children: [
+        /* @__PURE__ */ u("h1", { className: "text-2xl text-center", children: "ایجاد قرارداد" }),
+        /* @__PURE__ */ u(
+          "form",
+          {
+            onSubmit: handleSubmit,
+            className: "flex w-full flex-col space-y-2",
+            children: [
+              /* @__PURE__ */ u("div", { children: [
+                /* @__PURE__ */ u("label", { htmlFor: "contract_name", children: "عنوان قرارداد:" }),
+                /* @__PURE__ */ u(
+                  "input",
+                  {
+                    type: "text",
+                    id: "contract_name",
+                    name: "name",
+                    value: contract.name || "",
+                    onChange: handleContractChange,
+                    required: true,
+                    className: "w-full px-3 py-2 border rounded-lg"
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u("div", { children: [
+                /* @__PURE__ */ u("label", { htmlFor: "contractor", children: "پیمانکار:" }),
+                /* @__PURE__ */ u(
+                  "select",
+                  {
+                    id: "contractor",
+                    name: "contractor",
+                    value: contract.contractor || "",
+                    onChange: handleContractChange,
+                    required: true,
+                    className: "w-full px-3 py-2 border rounded-lg",
+                    children: [
+                      /* @__PURE__ */ u("option", { value: "", children: "یک پیمانکار انتخاب کنید" }),
+                      contractors.map((contractor) => /* @__PURE__ */ u("option", { value: contractor.id, children: contractor.company_name }, contractor.id))
+                    ]
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u("div", { children: [
+                /* @__PURE__ */ u("label", { htmlFor: "contract_type", children: "نوع قرارداد:" }),
+                /* @__PURE__ */ u(
+                  "select",
+                  {
+                    id: "contract_type",
+                    name: "contract_type",
+                    value: contract.contract_type || "",
+                    onChange: handleContractChange,
+                    required: true,
+                    className: "w-full px-3 py-2 border rounded-lg",
+                    children: [
+                      /* @__PURE__ */ u("option", { value: "", children: "یک نوع قرارداد انتخاب کنید" }),
+                      contractTypes.map((type) => /* @__PURE__ */ u("option", { value: type.id, children: type.name }, type.id))
+                    ]
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u("div", { children: [
+                /* @__PURE__ */ u("label", { htmlFor: "start_date", children: "تاریخ شروع:" }),
+                /* @__PURE__ */ u(
+                  "input",
+                  {
+                    id: "start_date",
+                    name: "start_date",
+                    value: showJalali(contract.start_date) || "",
+                    onChange: handleContractChangeDates,
+                    required: true,
+                    className: "w-full px-3 py-2 border rounded-lg",
+                    "data-jdp": true
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u("div", { children: [
+                /* @__PURE__ */ u("label", { htmlFor: "end_date", children: "تاریخ پایان:" }),
+                /* @__PURE__ */ u(
+                  "input",
+                  {
+                    id: "end_date",
+                    name: "end_date",
+                    value: showJalali(contract.end_date) || "",
+                    onChange: handleContractChangeDates,
+                    required: true,
+                    className: "w-full px-3 py-2 border rounded-lg",
+                    "data-jdp": true
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u("div", { children: [
+                /* @__PURE__ */ u("label", { htmlFor: "total_value", children: "ارزش کل:" }),
+                /* @__PURE__ */ u(
+                  "input",
+                  {
+                    id: "total_value",
+                    name: "total_value",
+                    type: "number",
+                    value: contract.total_value || "",
+                    onChange: handleContractChange,
+                    required: true,
+                    className: "w-full px-3 py-2 border rounded-lg"
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u("div", { children: [
+                /* @__PURE__ */ u("label", { htmlFor: "total_value_euro", children: "ارزش کل (یورو):" }),
+                /* @__PURE__ */ u(
+                  "input",
+                  {
+                    id: "total_value_euro",
+                    name: "total_value_euro",
+                    type: "number",
+                    value: contract.total_value_euro || "",
+                    onChange: handleContractChange,
+                    required: true,
+                    className: "w-full px-3 py-2 border rounded-lg"
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u(Modal, { showModal, setShowModal, errors, children: modalContent }),
+              /* @__PURE__ */ u("div", { className: "mt-4", children: [
+                /* @__PURE__ */ u("h3", { className: "text-lg font-semibold mb-2", children: "دستگاه‌های انتخاب شده:" }),
+                coils && coils.length > 0 ? /* @__PURE__ */ u("ul", { className: "space-y-2", children: coils.map((coil, index) => /* @__PURE__ */ u("li", { className: "flex items-center justify-between bg-gray-100 rounded-lg p-3 shadow-sm", children: [
+                  /* @__PURE__ */ u("span", { className: "text-gray-800 font-medium", children: coil.name }),
+                  /* @__PURE__ */ u(
+                    "button",
+                    {
+                      onClick: () => handleDeleteCoil(coil.id),
+                      className: "text-red-500 hover:text-red-700 focus:outline-none",
+                      children: /* @__PURE__ */ u("svg", { xmlns: "http://www.w3.org/2000/svg", className: "h-5 w-5", viewBox: "0 0 20 20", fill: "currentColor", children: /* @__PURE__ */ u("path", { fillRule: "evenodd", d: "M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z", clipRule: "evenodd" }) })
+                    }
+                  )
+                ] }, index)) }) : /* @__PURE__ */ u(k, {})
+              ] }),
+              /* @__PURE__ */ u(
+                "button",
+                {
+                  type: "button",
+                  onClick: handleAddCoil,
+                  className: "inline-block px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-lg shadow-md hover:from-green-600 hover:to-green-800 focus:outline-none",
+                  children: "اضافه کردن دستگاه به قرارداد"
+                }
+              ),
+              /* @__PURE__ */ u(
+                "button",
+                {
+                  className: "inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:from-blue-600 hover:to-blue-800 focus:outline-none",
+                  type: "submit",
+                  children: "ثبت"
+                }
+              )
+            ]
+          }
+        )
+      ]
+    }
+  ) });
+};
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie != "") {
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) == name + "=") {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+B(/* @__PURE__ */ u(CreateContractWithCoilTubings, {}), document.getElementById("app"));

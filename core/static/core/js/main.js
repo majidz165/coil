@@ -8,14 +8,14 @@ $(document).ready(function () {
   //   "format": "L"
   // })
   // $(".pdate-picker").hide()
-  document.addEventListener("jdp:change", function (e) {
-    console.log(e);
-    console.log(e.target.value);
-    const [year, month, day] = e.target.value.split("/")
-    // const gdate = new JalaliDate(parseInt(year), parseInt(month), parseInt(day)).getGregorianDate()
-    // console.log(gdate.getDate());
-    // e.target.value = `${gdate.getDate()}/${gdate.getMonth()}/${gdate.getFullYear()}`
-  })
+  // document.addEventListener("jdp:change", function (e) {
+  //   console.log(e);
+  //   console.log(e.target.value);
+  //   const [year, month, day] = e.target.value.split("/")
+  //   // const gdate = new JalaliDate(parseInt(year), parseInt(month), parseInt(day)).getGregorianDate()
+  //   // console.log(gdate.getDate());
+  //   // e.target.value = `${gdate.getDate()}/${gdate.getMonth()}/${gdate.getFullYear()}`
+  // })
   // attr("data-jdp", "")
 
   // $('.pdate-picker').datepicker();

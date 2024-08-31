@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView,UpdateView
 from django.urls import reverse_lazy
 from core.models.contractor import Contractor, Subcontractor
 
@@ -11,6 +11,12 @@ class ContractorDetailView(DetailView):
     template_name = 'core/contractor_detail.html'
 
 class ContractorCreateView(CreateView):
+    model = Contractor
+    template_name = 'core/contractor_form.html'
+    fields = ['user', 'company_name', 'contact_person', 'email', 'phone']
+    success_url = reverse_lazy('contractor-list')
+
+class ContractorUpdateView(UpdateView):
     model = Contractor
     template_name = 'core/contractor_form.html'
     fields = ['user', 'company_name', 'contact_person', 'email', 'phone']

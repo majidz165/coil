@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
+    'rest_framework',
     "debug_toolbar",
     'mptt',
     'core',
@@ -130,3 +132,12 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser'
+     )
+ }
+
+AUTH_USER_MODEL = 'users.User'

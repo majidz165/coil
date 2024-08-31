@@ -1,6 +1,28 @@
 from rest_framework import serializers
-from .models.contract import Contract
+from .models.contract import Contract,ContractType,Unit
 from .models.coil_tubing import CoilTubingContract, CoilTubing
+from .models.contractor import Contractor, Subcontractor
+
+class ContractorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contractor
+        fields = '__all__'
+
+class SubcontractorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subcontractor
+        fields = '__all__'
+
+class UnitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Unit
+        fields = '__all__'
+
+class ContractTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContractType
+        fields = '__all__'
+
 
 class CoilTubingSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,7 +33,7 @@ class CoilTubingSerializer(serializers.ModelSerializer):
 class CoilTubingContractSerializer(serializers.ModelSerializer):
     class Meta:
         model = CoilTubingContract
-        fields = ['coil_tubing', 'start_date', 'end_date']
+        fields = ['coil_tubing',]
 
 class ContractSerializer(serializers.ModelSerializer):
     coil_tubings = CoilTubingContractSerializer(many=True)
