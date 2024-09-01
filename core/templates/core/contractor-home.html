@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Section 1: Contractor Info -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>{% trans "Contractor Information" %}</h2>
+        </div>
+        <div class="card-body">
+            <p><strong>{% trans "Name" %}:</strong> {{ contractor.name }}</p>
+            <p><strong>{% trans "Contact Person" %}:</strong> {{ contractor.contact_person }}</p>
+            <p><strong>{% trans "Email" %}:</strong> {{ contractor.email }}</p>
+            <p><strong>{% trans "Phone" %}:</strong> {{ contractor.phone }}</p>
+            <p><strong>{% trans "Address" %}:</strong> {{ contractor.address }}</p>
+            <!-- Add more fields as needed based on your Contractor model -->
+        </div>
+    </div>
+
+    <!-- Section 2: Coil Stats and Contracts -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>{% trans "Coil Statistics and Contracts" %}</h2>
+        </div>
+        <div class="card-body">
+            <h3>{% trans "Coil Statistics" %}</h3>
+            <ul>
+                <li>{% trans "Total Coils" %}: {{ contractor.coils.count }}</li>
+                <li>{% trans "Active Coils" %}: {{ contractor.coils.filter(status='active').count }}</li>
+                <!-- Add more coil statistics as needed -->
+            </ul>
+
+            <h3>{% trans "Contracts" %}</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>{% trans "Contract Number" %}</th>
+                        <th>{% trans "Start Date" %}</th>
+                        <th>{% trans "End Date" %}</th>
+                        <th>{% trans "Status" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contract in contractor.contracts.all %}
+                    <tr>
+                        <td>{{ contract.number }}</td>
+                        <td>{{ contract.start_date }}</td>
+                        <td>{{ contract.end_date }}</td>
+                        <td>{{ contract.get_status_display }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">{% trans "No contracts found." %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Section 3: Reports (in Persian) -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>{% trans "Contractor Reports" %}</h2>
+        </div>
+        <div class="card-body" dir="rtl" lang="fa">
+            <h3>گزارش‌های پیمانکار</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>تاریخ</th>
+                        <th>عنوان</th>
+                        <th>وضعیت</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for report in contractor.reports.all %}
+                    <tr>
+                        <td>{{ report.date|date:"Y/m/d" }}</td>
+                        <td>{{ report.title }}</td>
+                        <td>{{ report.get_status_display }}</td>
+                        <td>
+                            <a href="{% url 'report_detail' report.id %}" class="btn btn-sm btn-info">مشاهده</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">هیچ گزارشی یافت نشد.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
