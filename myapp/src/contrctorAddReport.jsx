@@ -4,7 +4,7 @@ import { toGregorian, toJalaali } from "jalaali-js";
 import FullModal from './FullModal.jsx'
 
 
-function Device({ device, subcontractors, handleSubcontractorChange }) {
+function Device({ device, subcontractors, handleSubcontractorChange, handleSelectedChange }) {
     return (
         <div className="flex flex-row w-full bg-slate-100 border border-slate-300 px-2" key={device.id}>
             <div className="w-1/3">{device.name}</div>
@@ -56,7 +56,15 @@ const AddReport = () => {
             )
         );
     };
-
+    const handleSelectedChange = (deviceId, selected) => {
+        setDeviceUsage(prevDeviceUsage =>
+            prevDeviceUsage.map(device =>
+                device.id === deviceId
+                    ? { ...device, selected: selected }
+                    : device
+            )
+        );
+    }
 
     const fetchDevices = async () => {
         const url = document.getElementById("devices").getAttribute("href")
@@ -120,6 +128,7 @@ const AddReport = () => {
                     device={device}
                     subcontractors={subcontractors}
                     handleSubcontractorChange={handleSubcontractorChange}
+                    handleSelectedChange={handleSelectedChange}
                 />)}
             </div>
         </div >

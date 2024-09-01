@@ -1,7 +1,7 @@
 import { u } from "./jsxRuntime.module.js";
 import { B, h, y } from "./Modal.js";
 import { F as FullModal } from "./FullModal.js";
-function Device({ device, subcontractors, handleSubcontractorChange }) {
+function Device({ device, subcontractors, handleSubcontractorChange, handleSelectedChange }) {
   return /* @__PURE__ */ u("div", { className: "flex flex-row w-full bg-slate-100 border border-slate-300 px-2", children: [
     /* @__PURE__ */ u("div", { className: "w-1/3", children: device.name }),
     /* @__PURE__ */ u("div", { className: "w-1/3 px-2", children: /* @__PURE__ */ u("select", { className: "w-full bg-white", value: device.selected, onChange: (e) => handleSelectedChange(device.id, e.target.value), children: [
@@ -35,6 +35,13 @@ const AddReport = () => {
     setDeviceUsage(
       (prevDeviceUsage) => prevDeviceUsage.map(
         (device) => device.id === deviceId ? { ...device, subcontractor: subcontractorId } : device
+      )
+    );
+  };
+  const handleSelectedChange = (deviceId, selected) => {
+    setDeviceUsage(
+      (prevDeviceUsage) => prevDeviceUsage.map(
+        (device) => device.id === deviceId ? { ...device, selected } : device
       )
     );
   };
@@ -90,7 +97,8 @@ const AddReport = () => {
         {
           device,
           subcontractors,
-          handleSubcontractorChange
+          handleSubcontractorChange,
+          handleSelectedChange
         }
       ))
     ] })
