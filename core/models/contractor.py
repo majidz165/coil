@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 from django.conf import settings
 class Contractor(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="کاربر")
+    users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='contractors', verbose_name="کاربران")
     company_name = models.CharField(max_length=100, verbose_name="نام شرکت")
     contact_person = models.CharField(max_length=100, verbose_name="شخص رابط")
     email = models.EmailField(verbose_name="ایمیل")

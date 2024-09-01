@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<a href="{% url 'get_contractor_detail' %}" id="url" hidden></a>
 <a href="{% url 'devices-list' %}" id="devices" hidden></a>
 <a href="{% url 'jobs-list' %}" id="jobs" hidden></a>
 <a href="{% url 'categories-list' %}" id="categories" hidden></a>
-<a href="{% url 'add-report' %}" id="add-report" hidden></a>
+<a href="{% url 'sub-contractors-list' %}" id="subcontractors" hidden></a>
+
 
 <div id="app">
 </div>
-<script src="{% static 'core/js/contrctorDetails.js' %}" type="module"></script>
+<script src="{% static 'core/js/contrctorAddReport.js' %}" type="module"></script>
 
 {% endblock content %}

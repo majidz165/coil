@@ -2,10 +2,12 @@ from django.urls import path
 from .views import contractor_views, contract_views, coil_tubing_views
 from core.api_views.contract import CreateContractWithCoilTubingsView,ContractCreateApi
 from core.router import urlpatterns as api_urls
-from core.views.home import HomeView
+from core.views.home import HomeView,ContractorDetailAPIView,AddReport
 urlpatterns = [
     # Contractor URLs
     path("",HomeView,name='home'),
+    path("report/add",AddReport,name="add-report"),
+    
     path('contractors/', contractor_views.ContractorListView.as_view(), name='contractor-list'),
     path('contractors/<int:pk>/', contractor_views.ContractorDetailView.as_view(), name='contractor-detail'),
     path('contractors/create/', contractor_views.ContractorCreateView.as_view(), name='contractor-create'),
@@ -43,5 +45,6 @@ urlpatterns = [
     path('contracts/create/',CreateContractWithCoilTubingsView.as_view(),name='contract-create'),
     # path('api/',api_urls),
     path('api/create/contract',ContractCreateApi.as_view(),name='create_contract_with_coil_tubings'),
+    path('api/get/contractor',ContractorDetailAPIView.as_view(),name='get_contractor_detail'),
 ] 
 urlpatterns += api_urls

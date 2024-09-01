@@ -11,7 +11,8 @@ export default defineConfig({
       input: {
         contractCreate: "src/contractCreate.jsx",
         Modal: "src/Modal.jsx",
-        justCheck: "src/justCheck.jsx",
+        contrctorDetails: "src/contrctorDetails.jsx",
+        contrctorAddReport: 'src/contrctorAddReport.jsx',
 
       },
       output: {
