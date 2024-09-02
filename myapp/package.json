@@ -11,7 +11,9 @@
 		"globe": "^0.3.1",
 		"jalaali-js": "^1.2.7",
 		"jalali-moment": "^3.3.11",
-		"preact": "^10.22.1"
+		"jquery-clock-timepicker": "^2.6.5",
+		"preact": "^10.22.1",
+		"timepicker": "^1.14.1"
 	},
 	"devDependencies": {
 		"@preact/preset-vite": "^2.9.0",

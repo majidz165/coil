@@ -1,6 +1,10 @@
-import { u } from "./jsxRuntime.module.js";
-import { A, k } from "./Modal.js";
-function FullModal({ showModal, setShowModal, errors, children }) {
+import { A, u, k } from "./hooks.module.js";
+function FullModal({
+  showModal,
+  setShowModal,
+  errors,
+  children
+}) {
   const modal = A();
   const modalBody = A();
   function handleClick(event) {
@@ -13,7 +17,6 @@ function FullModal({ showModal, setShowModal, errors, children }) {
     showModal ? /* @__PURE__ */ u(
       "div",
       {
-        dir: "rtl",
         className: "fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center backdrop-blur-md",
         ref: modal,
         onClick: handleClick,

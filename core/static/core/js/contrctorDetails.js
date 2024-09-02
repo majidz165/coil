@@ -1,5 +1,4 @@
-import { u } from "./jsxRuntime.module.js";
-import { B, h, y, k } from "./Modal.js";
+import { B, u, h, y, k } from "./hooks.module.js";
 import { F as FullModal } from "./FullModal.js";
 function Contract({ contract }) {
   return /* @__PURE__ */ u("div", { className: "w-full p-4", children: /* @__PURE__ */ u("div", { className: "bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300", children: [
