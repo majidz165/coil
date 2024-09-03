@@ -1,35 +1,31 @@
 import { h, Component } from "preact";
-import { useRef } from "preact/hooks";
+import { createRef } from "preact";
 class ClockPicker extends Component {
   constructor(props) {
     super(props);
-    this.timepickerRef = useRef(null);
+    this.timepickerRef = createRef();;
   }
 
   componentDidMount() {
     this.initDatepicker();
   }
 
-  handleChange = (e) => {
-    // Handle change logic here
-  };
+
 
   initDatepicker = () => {
     // Initialize datepicker logic here
-    // $(this.timepickerRef).clockTimePicker();
-    console.log(this.timepickerRef.current);
+    $(this.timepickerRef.current).clockTimePicker();
   };
 
   render() {
     return (
-      <div class="clock-picker">
-        <input
-          className="timepicker"
-          type="text"
-          ref={this.timepickerRef}
-          onBlur={this.handleChange}
-        />
-      </div>
+      <input
+        name={this.props.name}
+        className="w-full border border-gray-200"
+        type="text"
+        ref={this.timepickerRef}
+
+      />
     );
   }
 }

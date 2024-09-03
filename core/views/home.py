@@ -9,7 +9,10 @@ from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
 from core.models import CoilTubing,CoilTubingContract
 from core.models import Device,Job,Category,Subcontractor
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def HomeView(request):
     if request.user.is_contractor:
         return render(request, 'core/contractor-home.html')

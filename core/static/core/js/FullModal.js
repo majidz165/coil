@@ -1,4 +1,5 @@
-import { A, u, k } from "./hooks.module.js";
+import { u } from "./jsxRuntime.module.js";
+import { A, k } from "./Modal.js";
 function FullModal({
   showModal,
   setShowModal,

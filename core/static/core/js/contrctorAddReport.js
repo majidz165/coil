@@ -1,38 +1,38 @@
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-import { u, b, A, B, h, y, k } from "./hooks.module.js";
+import { u } from "./jsxRuntime.module.js";
+import { b, m, B, h, y, k } from "./Modal.js";
+import { j as jalaaliJs } from "./index.js";
 import { F as FullModal } from "./FullModal.js";
 function Activity({ activity, index }) {
-  return /* @__PURE__ */ u("div", { className: "col-span-12 grid", children: [
-    /* @__PURE__ */ u("div", { className: "col-span-1", children: "#" }),
-    /* @__PURE__ */ u("div", { className: "col-span-2", children: "Start Time" }),
-    /* @__PURE__ */ u("div", { className: "col-span-2", children: "End Time" })
+  return /* @__PURE__ */ u("div", { className: "col-span-12 grid grid-cols-12", children: [
+    /* @__PURE__ */ u("div", { className: "col-span-1", children: index + 1 }),
+    /* @__PURE__ */ u("div", { className: "col-span-2", children: activity.start_time }),
+    /* @__PURE__ */ u("div", { className: "col-span-2", children: activity.end_time })
   ] }, index);
 }
 class ClockPicker extends b {
   constructor(props) {
     super(props);
-    __publicField(this, "handleChange", (e) => {
-    });
     __publicField(this, "initDatepicker", () => {
-      console.log(this.timepickerRef.current);
+      $(this.timepickerRef.current).clockTimePicker();
     });
-    this.timepickerRef = A(null);
+    this.timepickerRef = m();
   }
   componentDidMount() {
     this.initDatepicker();
   }
   render() {
-    return /* @__PURE__ */ u("div", { class: "clock-picker", children: /* @__PURE__ */ u(
+    return /* @__PURE__ */ u(
       "input",
       {
-        className: "timepicker",
+        name: this.props.name,
+        className: "w-full border border-gray-200",
         type: "text",
-        ref: this.timepickerRef,
-        onBlur: this.handleChange
+        ref: this.timepickerRef
       }
-    ) });
+    );
   }
 }
 function Device({
@@ -82,6 +82,14 @@ function Device({
     device.id
   );
 }
+function showJalali(date) {
+  if (date) {
+    const [y2, m2, d] = date.split("-");
+    const j = jalaaliJs.toJalaali(parseInt(y2), parseInt(m2), parseInt(d));
+    return `${j.jy}/${j.jm}/${j.jd}`;
+  }
+  return "";
+}
 const AddReport = () => {
   const [showModal, setShowModal] = h(false);
   h(false);
@@ -94,6 +102,12 @@ const AddReport = () => {
   const [deviceUsage, setDeviceUsage] = h([]);
   const [subcontractors, setSubcontractors] = h([]);
   const [activities, setActivities] = h([]);
+  const [report, setReport] = h({
+    contract: "",
+    contractor: "",
+    coil_tubing: "",
+    date: ""
+  });
   y(() => {
     fetchDevices();
     fetchJobs();
@@ -177,8 +191,8 @@ const AddReport = () => {
   }
   const handleAddActivity = () => {
     setModalContent(
-      /* @__PURE__ */ u("div", { className: "grid gap-4", children: /* @__PURE__ */ u("form", { onSubmit: handleActivitySubmit, className: "space-y-4", children: [
-        /* @__PURE__ */ u("div", { children: [
+      /* @__PURE__ */ u("div", { className: "grid gap-4 w-full", children: /* @__PURE__ */ u("form", { onSubmit: handleActivitySubmit, className: "grid gap-4 w-full grid-cols-12 p-2", children: [
+        /* @__PURE__ */ u("div", { className: "col-span-2", children: [
           /* @__PURE__ */ u(
             "label",
             {
@@ -187,9 +201,9 @@ const AddReport = () => {
               children: "Start Time"
             }
           ),
-          /* @__PURE__ */ u(ClockPicker, {})
+          /* @__PURE__ */ u(ClockPicker, { name: "start_time" })
         ] }),
-        /* @__PURE__ */ u("div", { children: [
+        /* @__PURE__ */ u("div", { className: "col-span-2", children: [
           /* @__PURE__ */ u(
             "label",
             {
@@ -198,23 +212,13 @@ const AddReport = () => {
               children: "End Time"
             }
           ),
-          /* @__PURE__ */ u(
-            "input",
-            {
-              type: "text",
-              id: "end_time",
-              name: "end_time",
-              "aria-label": "Time",
-              required: true,
-              className: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            }
-          )
+          /* @__PURE__ */ u(ClockPicker, { name: "end_time" })
         ] }),
         /* @__PURE__ */ u(
           "button",
           {
             type: "submit",
-            className: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+            className: "rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 col-span-2",
             children: "Add Activity"
           }
         )
@@ -232,7 +236,13 @@ const AddReport = () => {
     setActivities([...activities, newActivity]);
     setShowModal(false);
   };
-  return /* @__PURE__ */ u("div", { className: "grid grid-cols-12 gap-1", children: [
+  const handleContractChangeDates = (e) => {
+    const [y2, m2, d] = e.target.value.split("/");
+    const gregorianDate = jalaaliJs.toGregorian(parseInt(y2), parseInt(m2), parseInt(d));
+    const date = `${gregorianDate.gy}-${gregorianDate.gm}-${gregorianDate.gd}`;
+    setReport({ ...report, [e.target.name]: date });
+  };
+  return /* @__PURE__ */ u("div", { className: "grid grid-cols-12", children: [
     /* @__PURE__ */ u(
       FullModal,
       {
@@ -242,9 +252,50 @@ const AddReport = () => {
         children: modalContent
       }
     ),
+    /* @__PURE__ */ u("div", { className: "p-2 col-span-12 border border-gray-800 bg-white grid grid-cols-12", children: [
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "date:" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: /* @__PURE__ */ u(
+        "input",
+        {
+          type: "text",
+          name: "date",
+          "data-jdp": true,
+          value: showJalali(report.date) || "",
+          onChange: handleContractChangeDates
+        }
+      ) }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "p/e company:" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "@TODO" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "field" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "@TODO" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "well no:" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "@TODO" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "rig no:" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "@TODO" })
+    ] }),
+    /* @__PURE__ */ u("div", { className: "p-2 col-span-12 border border-gray-800 bg-white grid grid-cols-12", children: [
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "unit no:" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: report.coil_tubing.name || "" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "contract no" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: report.contract.number || "" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "status" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "p/e supervisor" }),
+      /* @__PURE__ */ u("div", { className: "col-span-2 uppercase px-1", children: "@TODO" })
+    ] }),
+    /* @__PURE__ */ u("div", { className: "p-2 col-span-12 border border-gray-800 bg-white grid grid-cols-12", children: [
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "days on location" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "@TODO" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "coil od/len" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "@TODO" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "m/daily running" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "@TODO" }),
+      /* @__PURE__ */ u("div", { className: "col-span-1 uppercase px-1", children: "m/total" }),
+      /* @__PURE__ */ u("div", { className: "col-span-2 uppercase px-1", children: "@TODO" })
+    ] }),
     /* @__PURE__ */ u("div", { className: "col-span-12 md:col-span-8 border border-gray-800 bg-white grid grid-cols-12", children: [
       activities.length > 0 && /* @__PURE__ */ u(k, { children: [
-        /* @__PURE__ */ u("div", { className: "col-span-12 grid", children: [
+        /* @__PURE__ */ u("div", { className: "col-span-12 grid grid-cols-12", children: [
           /* @__PURE__ */ u("div", { className: "col-span-1", children: "#" }),
           /* @__PURE__ */ u("div", { className: "col-span-2", children: "Start Time" }),
           /* @__PURE__ */ u("div", { className: "col-span-2", children: "End Time" })
